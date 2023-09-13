@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
 }
 
+
 android {
     namespace = "com.moueza.superquiz"
     compileSdk = 33
