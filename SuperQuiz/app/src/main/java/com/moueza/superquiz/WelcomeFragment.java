@@ -71,18 +71,17 @@ public class WelcomeFragment extends Fragment {
         //return inflater.inflate(R.layout.fragment_welcome, container, false);
 
         binding = FragmentWelcomeBinding.inflate(inflater, container, false);
-        binding.playButton.setEnabled(false);//++++ ++++++++++
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //binding.playButton.setEnabled(false);
+        binding.playButton.setEnabled(false);//++++ ++++++++++
         binding.usernameEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                binding.playButton.setEnabled(false);
+
             }
 
             @Override
@@ -93,8 +92,8 @@ public class WelcomeFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 binding.playButton.setEnabled(!s.toString().isEmpty());
-                //binding.playButton.setEnabled(false);
-                
+
+
                 binding.playButton.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {
