@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,6 +99,8 @@ public class WelcomeFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         // The user just clicked
+                        //naviguer vers le fragment de quiz
+                        Log.d("Fanny","Clic !");
                     }
                 });
             }
