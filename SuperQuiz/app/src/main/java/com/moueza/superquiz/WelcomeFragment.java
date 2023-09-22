@@ -94,6 +94,7 @@ public class WelcomeFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 binding.playButton.setEnabled(!s.toString().isEmpty());
                 //binding.playButton.setEnabled(false);
+                
                 binding.playButton.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {
