@@ -61,7 +61,7 @@ public class WelcomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        binding.playButton.setEnabled(false);
+
     }
 
     @Override
@@ -69,7 +69,9 @@ public class WelcomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_welcome, container, false);
+
         binding = FragmentWelcomeBinding.inflate(inflater, container, false);
+        binding.playButton.setEnabled(false);//++++ ++++++++++
         return binding.getRoot();
     }
 
@@ -80,7 +82,7 @@ public class WelcomeFragment extends Fragment {
         binding.usernameEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                binding.playButton.setEnabled(false);
             }
 
             @Override
@@ -90,8 +92,14 @@ public class WelcomeFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                //binding.playButton.setEnabled(!s.toString().isEmpty());
-                binding.playButton.setEnabled(false);
+                binding.playButton.setEnabled(!s.toString().isEmpty());
+                //binding.playButton.setEnabled(false);
+                binding.playButton.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        // The user just clicked
+                    }
+                });
             }
         });
     }
