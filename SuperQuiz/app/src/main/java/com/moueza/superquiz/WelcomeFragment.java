@@ -104,8 +104,8 @@ public class WelcomeFragment extends Fragment {
                         Log.d("Fanny", "Clic !");
                         FragmentManager fragmentManager = getParentFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        QuizFragment quizFragment = QuizFragment.newInstance();
-                        fragmentTransaction.add(R.id.container, quizFragment);
+                        QuizFragment quizFragment = new QuizFragment(); //QuizFragment.newInstance();
+                        fragmentTransaction.add(R.id.fragment_container_view_tag, quizFragment);
                         //fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                     }
