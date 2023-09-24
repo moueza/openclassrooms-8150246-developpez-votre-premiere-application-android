@@ -1,14 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d2c2fd"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".QuizFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/quizTitleeQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:background="#ffffff"
+        android:padding="30dp"
+        android:text="@string/quiz_title"
+
+        android:textSize="24sp" />
+
+
+    <TextView
+        android:id="@+id/quizAnswer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:background="#ffffff"
+        android:padding="30dp"
+        android:text="@string/quiz_title"
+
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/quizAnswer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:background="#ffffff"
+        android:padding="30dp"
+        android:text="@string/quiz_title"
+
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/quizAnswer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:background="#ffffff"
+        android:padding="30dp"
+        android:text="@string/quiz_title"
+
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/quizAnswer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:background="#ffffff"
+        android:padding="30dp"
+        android:text="@string/quiz_title"
+
+        android:textSize="24sp" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#d2c2fd"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        tools:context=".QuizFragment">
 
-</FrameLayout>
+
+        <TextView
+            android:id="@+id/quizValidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:background="#ffffff"
+            android:padding="30dp"
+            android:text="@string/quiz_title"
+
+            android:textSize="24sp" />
+
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="Next" />
+    </LinearLayout>
+
+</LinearLayout>
+
