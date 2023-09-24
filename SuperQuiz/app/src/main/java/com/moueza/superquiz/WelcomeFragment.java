@@ -1,17 +1,18 @@
 package com.moueza.superquiz;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.moueza.superquiz.databinding.FragmentWelcomeBinding;
 
@@ -95,12 +96,18 @@ public class WelcomeFragment extends Fragment {
                 binding.playButton.setEnabled(!s.toString().isEmpty());
 
 
-                binding.playButton.setOnClickListener(new View.OnClickListener(){
+                binding.playButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         // The user just clicked
                         //naviguer vers le fragment de quiz
-                        Log.d("Fanny","Clic !");
+                        Log.d("Fanny", "Clic !");
+                        FragmentManager fragmentManager = getParentFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        QuizFragment quizFragment = QuizFragment.newInstance();
+                        fragmentTransaction.add(R.id.container, quizFragment);
+                        //fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
                     }
                 });
             }
