@@ -1,5 +1,7 @@
 package com.moueza.superquiz.data;
 
+import java.util.List;
+
 public class QuestionRepository {
     private final QuestionBank questionBank;
 
@@ -8,8 +10,8 @@ public class QuestionRepository {
     }
 
 
-    public QuestionBank getQuestionBank() {
-        return questionBank;
+    public List<Question> getQuestions() {
+        return questionBank.getQuestions();
     }
 
    /* public void setQuestionBank(QuestionBank questionBank) {
