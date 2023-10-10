@@ -1,4 +1,4 @@
-package com.moueza.superquiz;
+package com.moueza.superquiz.ui.welcome;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,7 +16,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 
+import com.moueza.superquiz.R;
 import com.moueza.superquiz.databinding.FragmentWelcomeBinding;
+import com.moueza.superquiz.ui.quiz.QuizFragment;
 
 /**
  * A simple {@link Fragment} subclass.
