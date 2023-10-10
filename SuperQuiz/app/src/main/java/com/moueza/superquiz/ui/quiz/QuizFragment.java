@@ -1,4 +1,4 @@
-package com.moueza.superquiz;
+package com.moueza.superquiz.ui.quiz;
 
 import android.os.Bundle;
 import android.util.Log;
