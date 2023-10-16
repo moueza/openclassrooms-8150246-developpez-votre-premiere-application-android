@@ -6,18 +6,19 @@ import androidx.lifecycle.ViewModel;
 import com.moueza.superquiz.data.Question;
 import com.moueza.superquiz.data.QuestionRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class QuizViewModel extends ViewModel {
 
 
     private final QuestionRepository questionRepository;
-
-
+    public List<Question> questions = new ArrayList<Question>();
     MutableLiveData<Question> currentQuestion = new MutableLiveData<Question>();
+    /*currentQuestion.postValue(questions.get(1));
+    currentQuestion.getValue();
+    */
     MutableLiveData<Integer> score = new MutableLiveData<Integer>(0);
-        /*currentQuestion.postValue(questions.get(1));
-        currentQuestion.getValue();
-        */
-
     /*
     viewModel.currentQuestion.observe(getViewLifecycleOwner(), new Observer<Question>() {
         @Override
@@ -27,29 +28,36 @@ public class QuizViewModel extends ViewModel {
     });
     */
     MutableLiveData<Boolean> isLastQuestion = new MutableLiveData<Boolean>(false);
-
     //int choice = -99;
     int questionIndex = 0;
 
     public QuizViewModel(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
 
-
     }
 
     public void startQuiz() {
-        currentQuestion.postValue(questionRepository.getQuestions().get(questionIndex));
+        this.questions = this.questionRepository.getQuestions();
+        currentQuestion.postValue(this.questions.get(questionIndex));
 
     }
 
     public boolean isAnswerValid(int choice) {
-        return choice == currentQuestion.getValue().getAnswerIndex();
+        boolean isGoodAnswer = (choice == currentQuestion.getValue().getAnswerIndex());
+        if (isGoodAnswer) {
+            //score = score + 1;
+            score.postValue(this.score.getValue() + 1);//++++
+        }
+
+        return isGoodAnswer;
     }
 
     public void nextQuestion() {
         questionIndex++;
-        currentQuestion.postValue(questionRepository.getQuestions().get(questionIndex));
+        currentQuestion.postValue(this.questions.get(questionIndex));
 
+        //isLastQuestion = (this.questionIndex == this.questions.size() - 1);
+        isLastQuestion.postValue(this.questionIndex == this.questions.size() - 1);//++++
     }
 }
 
