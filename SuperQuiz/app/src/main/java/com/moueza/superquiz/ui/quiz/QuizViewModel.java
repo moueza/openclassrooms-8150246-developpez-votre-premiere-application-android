@@ -13,7 +13,6 @@ public class QuizViewModel extends ViewModel {
 
 
     private final QuestionRepository questionRepository;
-    public List<Question> questions = new ArrayList<Question>();
     MutableLiveData<Question> currentQuestion = new MutableLiveData<Question>();
     /*currentQuestion.postValue(questions.get(1));
     currentQuestion.getValue();
@@ -28,8 +27,9 @@ public class QuizViewModel extends ViewModel {
     });
     */
     MutableLiveData<Boolean> isLastQuestion = new MutableLiveData<Boolean>(false);
+    private List<Question> questions = new ArrayList<Question>();
     //int choice = -99;
-    int questionIndex = 0;
+    private int currentQuestionIndex = 0;
 
     public QuizViewModel(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
@@ -38,26 +38,33 @@ public class QuizViewModel extends ViewModel {
 
     public void startQuiz() {
         this.questions = this.questionRepository.getQuestions();
-        currentQuestion.postValue(this.questions.get(questionIndex));
+        this.currentQuestion.postValue(this.questions.get(currentQuestionIndex));
 
     }
 
-    public boolean isAnswerValid(int choice) {
-        boolean isGoodAnswer = (choice == currentQuestion.getValue().getAnswerIndex());
-        if (isGoodAnswer) {
+
+    public void nextQuestion() {
+        currentQuestionIndex++;
+        currentQuestion.postValue(this.questions.get(currentQuestionIndex));
+
+        //isLastQuestion = (this.questionIndex == this.questions.size() - 1);
+        isLastQuestion.postValue(this.currentQuestionIndex == this.questions.size() - 1);//++++
+    }
+
+
+    public boolean isAnswerValid(int answerIndex) {
+        Question question = currentQuestion.getValue();
+        boolean isGoodAnswer = (question != null) && (answerIndex == question.getAnswerIndex());
+
+        Integer currentScore = score.getValue();
+        if ((currentScore != null) && isGoodAnswer) {
             //score = score + 1;
-            score.postValue(this.score.getValue() + 1);//++++
+            score.postValue(currentScore + 1);//++++ vs setValue
         }
 
         return isGoodAnswer;
     }
 
-    public void nextQuestion() {
-        questionIndex++;
-        currentQuestion.postValue(this.questions.get(questionIndex));
-
-        //isLastQuestion = (this.questionIndex == this.questions.size() - 1);
-        isLastQuestion.postValue(this.questionIndex == this.questions.size() - 1);//++++
-    }
+   
 }
 
