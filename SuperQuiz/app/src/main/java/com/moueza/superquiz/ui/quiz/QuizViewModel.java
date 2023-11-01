@@ -65,6 +65,6 @@ public class QuizViewModel extends ViewModel {
         return isGoodAnswer;
     }
 
-   
+
 }
 
