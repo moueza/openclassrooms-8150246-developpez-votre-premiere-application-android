@@ -19,7 +19,7 @@ public class QuizFragment extends Fragment {
     public static String TAG = "Peter";
     FragmentQuizBinding binding;
 
-    QuizViewModel quizViewModel;
+    private QuizViewModel quizViewModel;
 
     /**
      * Called to do initial creation of a fragment.  This is called after
@@ -45,8 +45,8 @@ public class QuizFragment extends Fragment {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "QuizFragment.onCreate() called");
 
-        ViewModelFactory viewModelFactory = ViewModelFactory.getInstance();
-        quizViewModel = viewModelFactory.create(QuizViewModel.class);
+        ViewModelFactory viewModelFactoryInst = ViewModelFactory.getInstance();
+        quizViewModel = viewModelFactoryInst.create(QuizViewModel.class);
     }
 
     @Override
